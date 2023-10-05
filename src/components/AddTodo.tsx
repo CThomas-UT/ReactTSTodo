@@ -4,9 +4,9 @@ import { useTodo } from '../context'
 import { Input } from './Input'
 
 export const AddTodo = () => {
-  const [input, setInput] = useState()
+  const [input, setInput] = useState<string>('')
 
-  return{
+  return (
     <form>
       <div className="flex items-center w-full max-w-lg gap-2 p-5 m-auto">
         <input
@@ -24,5 +24,5 @@ export const AddTodo = () => {
         </button>
       </div>
     </form>
-  }
+  )
 }
