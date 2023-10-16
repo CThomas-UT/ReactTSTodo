@@ -6,7 +6,7 @@ import { Input } from './Input'
 export const AddTodo = () => {
   const [input, setInput] = useState<string>('')
   const inputRef = useRef<HTMLInputElement>(null)
-  const [todos, setTodos] = useState<string[]>([])
+  const { addTodo } = useTodo()
 
   useEffect(() => {
     if (inputRef.current) {
@@ -17,9 +17,11 @@ export const AddTodo = () => {
   const handleSubmission = (e: React.FormEvent) => {
     e.preventDefault()
     if (input.trim() !== '') {
-      setTodos([...todos, input])
+      addTodo(input)
       setInput('')
-      console.log('form submitted')
+      toast.success('Todo added successfully!')
+    } else {
+      toast.error('Please enter a valid todo!')
     }
     
   }
